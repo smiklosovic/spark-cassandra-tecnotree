@@ -10,7 +10,13 @@ import com.datastax.driver.mapping.annotations.Table;
 /**
  * Notice that this is Java class, not Scala class
  *
- * Implemention Serializable is important!
+ * If you work with Spark and you are using this class,
+ * it does not matter how it is annotated (e.g. by Cassandra driver of version 4),
+ *
+ * what is important is that it has getters and setters and you have to use JavaBeanColumnMapper
+ * if you want to save it via Spark
+ *
+ * The implemenation of Serializable interface is important!
  */
 @Table(keyspace = "tests", name = "test")
 public class TestModel implements Serializable {
